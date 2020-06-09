@@ -24,7 +24,7 @@ def func(audio_file, transcript):
 
     text = model.stt(data16)
     
-    with open("D:/Users/Monami/Video_to_text/Files/Transcript/output.txt", "w+") as f:
+    with open("D:/Video_to_text/Files/Transcript/output.txt", "w+") as f:
         f.write(text)
     
     return(text)

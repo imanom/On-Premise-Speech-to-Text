@@ -15,7 +15,7 @@ app.config["DEBUG"] = True
 
 
 def combine(method, name):
-    path = "D:/Users/Monami/Video_to_text/Files/"
+    path = "D:/Video_to_text/Files/"
     video =  name
     audio, transcript = vy.home(path, video)
     res = ""
@@ -26,7 +26,7 @@ def combine(method, name):
     return(res)
     
 
-
+# API to generate the transcript and store it in the local path
 @app.route('/generate_transcript', methods=['POST'])
 def home():
     #print(request.get_data())
@@ -55,20 +55,19 @@ def home():
         abort(400)
         
     filename = secure_filename(file_request.filename)
-    file_request.save(os.path.join('D:/Users/Monami/Video_to_text/Files/Video', filename))
+    file_request.save(os.path.join('D:/Video_to_text/Files/Video', filename))
     print("saved file successfully")
-    video_name = 'D:/Users/Monami/Video_to_text/Files/Video/'+filename
+    video_name = 'D:/Video_to_text/Files/Video/'+filename
     print(video_name)
 
     return(combine(request.form['method'], video_name))
 
 
-
+# API to download the trancript from the local file system where it was stored
 @app.route('/download_transcript', methods=['GET'])   
 def download():
-    #args = request.args
-    #name = args['name']
-    return send_file(os.path.join('D:/Users/Monami/Video_to_text/Files/Transcript/output.txt'), attachment_filename="output.txt", as_attachment=True)
+
+    return send_file(os.path.join('D:/Video_to_text/Files/Transcript/output.txt'), attachment_filename="output.txt", as_attachment=True)
 
 	
 	

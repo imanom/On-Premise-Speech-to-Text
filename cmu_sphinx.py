@@ -10,6 +10,6 @@ def func(audio_file, transcript):
         audio = r.record(source)
             
     text = r.recognize_sphinx(audio)
-    with open("D:/Users/Monami/Video_to_text/Files/Transcript/output.txt", "w+") as f:
+    with open("D:/Video_to_text/Files/Transcript/output.txt", "w+") as f:
         f.write(text)
     return(text)
